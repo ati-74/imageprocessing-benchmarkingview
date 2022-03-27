@@ -2,7 +2,7 @@ CellProfiler Pipeline: http://www.cellprofiler.org
 Version:5
 DateRevision:421
 GitHash:
-ModuleCount:12
+ModuleCount:13
 HasImagePlaneDetails:False
 
 Images:[module_num:1|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
@@ -53,7 +53,7 @@ Groups:[module_num:4|svn_version:'Unknown'|variable_revision_number:2|show_windo
     grouping metadata count:1
     Metadata category:None
 
-CorrectIlluminationCalculate:[module_num:5|svn_version:'Unknown'|variable_revision_number:2|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationCalculate:[module_num:5|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:mono
     Name the output image:IllumBlue
     Select how the illumination function is calculated:Regular
@@ -78,7 +78,7 @@ CorrectIlluminationCalculate:[module_num:5|svn_version:'Unknown'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationApply:[module_num:6|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationApply:[module_num:6|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:mono
     Name the output image:CorrBlue
     Select the illumination function:IllumBlue
@@ -86,7 +86,7 @@ CorrectIlluminationApply:[module_num:6|svn_version:'Unknown'|variable_revision_n
     Set output image values less than 0 equal to 0?:Yes
     Set output image values greater than 1 equal to 1?:Yes
 
-Watershed:[module_num:7|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Watershed:[module_num:7|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:CorrBlue
     Name the output object:Watershed
     Use advanced settings?:No
@@ -107,7 +107,7 @@ Watershed:[module_num:7|svn_version:'Unknown'|variable_revision_number:3|show_wi
     Maximum number of seeds:-1
     Structuring element for seed dilation:Disk,1
 
-IdentifySecondaryObjects:[module_num:8|svn_version:'Unknown'|variable_revision_number:10|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifySecondaryObjects:[module_num:8|svn_version:'Unknown'|variable_revision_number:10|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input objects:Watershed
     Name the objects to be identified:IdentifySecondaryObjects
     Select the method to identify the secondary objects:Propagation
@@ -137,7 +137,7 @@ IdentifySecondaryObjects:[module_num:8|svn_version:'Unknown'|variable_revision_n
     # of deviations:2.0
     Thresholding method:Minimum Cross-Entropy
 
-TrackObjects:[module_num:9|svn_version:'Unknown'|variable_revision_number:7|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+TrackObjects:[module_num:9|svn_version:'Unknown'|variable_revision_number:7|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Choose a tracking method:Overlap
     Select the objects to track:IdentifySecondaryObjects
     Select object measurement to use for tracking:None
@@ -168,12 +168,12 @@ TrackObjects:[module_num:9|svn_version:'Unknown'|variable_revision_number:7|show
     Cost of cell to empty matching:15.0
     Weight of area difference in function matching cost:25.0
 
-MeasureObjectSizeShape:[module_num:10|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+MeasureObjectSizeShape:[module_num:10|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select object sets to measure:IdentifySecondaryObjects
     Calculate the Zernike features?:No
     Calculate the advanced features?:No
 
-MeasureObjectNeighbors:[module_num:11|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+MeasureObjectNeighbors:[module_num:11|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select objects to measure:IdentifySecondaryObjects
     Select neighboring objects to measure:IdentifySecondaryObjects
     Method to determine neighbors:Expand until adjacent
@@ -186,7 +186,27 @@ MeasureObjectNeighbors:[module_num:11|svn_version:'Unknown'|variable_revision_nu
     Name the output image:PercentTouching
     Select colormap:Oranges
 
-ExportToSpreadsheet:[module_num:12|svn_version:'Unknown'|variable_revision_number:13|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+SaveImages:[module_num:12|svn_version:'Unknown'|variable_revision_number:16|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+    Select the type of image to save:Image
+    Select the image to save:TrackedCells
+    Select method for constructing file names:Sequential numbers
+    Select image name for file prefix:None
+    Enter file prefix:monoObjects
+    Number of digits:4
+    Append a suffix to the image file name?:No
+    Text to append to the image name:
+    Saved file format:tiff
+    Output file location:Default Input Folder sub-folder|Documents\\GitHub\\article\\CellProfiler\\Mono Culture\\4. CP outputs\\tracking
+    Image bit depth:8-bit integer
+    Overwrite existing files without warning?:No
+    When to save:Every cycle
+    Record the file and path information to the saved image?:No
+    Create subfolders in the output folder?:No
+    Base image folder:Elsewhere...|
+    How to save the series:T (Time)
+    Save with lossless compression?:Yes
+
+ExportToSpreadsheet:[module_num:13|svn_version:'Unknown'|variable_revision_number:13|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
     Add image file and folder names to your object data file?:No
