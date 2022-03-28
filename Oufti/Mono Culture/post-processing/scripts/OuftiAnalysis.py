@@ -6,7 +6,7 @@ import math
 
 def DataCleaning(dataFrame):
     #zero MajorAxisLength
-    incorrect_df=dataFrame.loc[dataFrame["x_center"]==0]
+    incorrect_df=dataFrame.loc[dataFrame["MajorAxisLength"]==0]
     incorrect_indx=list(set(incorrect_df["CellId"].values))
 
     #remove 
