@@ -1,7 +1,8 @@
 
 load('../../xy1/clist.mat','data');
 
-cellNumber=length(data);
+mat_size = size(data);
+cellNumber=mat_size(1);
 lable=[];
 division=[];
 NumDivision=[];

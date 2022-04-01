@@ -1,7 +1,7 @@
 
 %find .mat files in cell directory
-directory="../../xy1/cell/";
-files=dir([directory+"*.mat"]);
+directory='../../xy1/cell/';
+files=dir([strcat(directory,'*.mat')]);
 %sorted files
 sorted_files = natsortfiles(files);
 %number of files
@@ -16,7 +16,7 @@ intervalTime=1.5;
 for i=1:Num_files
     file_name=sorted_files(i).name;
     % load `.mat` file
-    load(directory+file_name,'CellA');
+    load(strcat(directory,file_name),'CellA');
     life_history=length(CellA);
     
     %store length and orientation of cell
