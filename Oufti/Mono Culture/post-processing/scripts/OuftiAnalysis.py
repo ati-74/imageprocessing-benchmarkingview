@@ -4,18 +4,6 @@ import numpy as np
 import math
 
 
-def DataCleaning(dataFrame):
-    # zero MajorAxisLength
-    incorrect_df = dataFrame.loc[dataFrame["MajorAxisLength"] == 0]
-    incorrect_indx = list(set(incorrect_df["CellId"].values))
-
-    # remove
-    correct_df = dataFrame[~dataFrame["CellId"].isin(incorrect_indx)]
-    correct_df = correct_df[~correct_df["parent"].isin(incorrect_indx)]
-
-    return correct_df
-
-
 def AverageGrowthRate(divisionLength, birthLength, LifeHistoryLength, interval_Time):
 
     if LifeHistoryLength >= 2:
@@ -94,11 +82,10 @@ if __name__ == "__main__":
     # csv file
     input_file = "../results/OuftiResults.csv"
     # interval time
-    interval_Time = 1.5
+    interval_Time = 1
 
     # Parsing Oufti Results
     df = pd.read_csv(input_file)
-    df = DataCleaning(df)
     results = ProcessData(df, interval_Time)
     print(results)
 
