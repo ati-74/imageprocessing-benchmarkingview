@@ -196,7 +196,7 @@ SaveImages:[module_num:12|svn_version:'Unknown'|variable_revision_number:16|show
     Append a suffix to the image file name?:No
     Text to append to the image name:
     Saved file format:tiff
-    Output file location:Default Input Folder sub-folder|Documents\\Schnitzcells sample images set (CP)\\4. CP outputs\\tracking
+    Output file location:Default Input Folder sub-folder|Documents\\Schnitzcells sample images set\\4. CP outputs\\tracking
     Image bit depth:8-bit integer
     Overwrite existing files without warning?:No
     When to save:Every cycle
@@ -214,7 +214,7 @@ ExportToSpreadsheet:[module_num:13|svn_version:'Unknown'|variable_revision_numbe
     Calculate the per-image mean values for object measurements?:No
     Calculate the per-image median values for object measurements?:No
     Calculate the per-image standard deviation values for object measurements?:No
-    Output file location:Default Input Folder sub-folder|Documents\\Schnitzcells sample images set (CP)\\4. CP outputs
+    Output file location:Default Input Folder sub-folder|Documents\\Schnitzcells sample images set\\4. CP outputs
     Create a GenePattern GCT file?:No
     Select source of sample row name:Metadata
     Select the image to use as the identifier:None
