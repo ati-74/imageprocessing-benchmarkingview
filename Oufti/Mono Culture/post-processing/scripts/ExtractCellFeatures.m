@@ -87,6 +87,6 @@ T2.Properties.VariableNames={'StepNumber','NumberOfCells'};
 T(ismember(T.MajorAxisLength,0),:)=[];
 
 % write to csv
-writetable(T,'../results/Oufti_Extract_bacteria_features.csv','Delimiter',',','QuoteStrings',true)
+writetable(T,'../results/Oufti_bacteria_feature_analysis.csv','Delimiter',',','QuoteStrings',true)
 writetable(T2,'../results/Oufti_Num_cells_in_each_timeStep.csv','Delimiter',',','QuoteStrings',true)
 

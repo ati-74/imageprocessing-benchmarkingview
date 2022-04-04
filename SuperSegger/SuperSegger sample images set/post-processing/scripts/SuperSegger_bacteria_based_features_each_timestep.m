@@ -31,5 +31,5 @@ T.Properties.VariableNames={'TimeStep','CellNumber','Orientation'};
 
 % write to csv
 %life history based features
-writetable(T,'../results/SuperSegger_bacteria_based_features_each_timestep.csv','Delimiter',',','QuoteStrings',true)
+writetable(T,'../results/SuperSegger_bacteria_feature_analysis.csv','Delimiter',',','QuoteStrings',true)
 

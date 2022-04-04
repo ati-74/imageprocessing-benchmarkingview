@@ -13,7 +13,7 @@ def lineage_based_features(df):
         # number of division
         num_division = len(list(set(df_lineage['parent'].values)))-1
         result_dict["lable"].append(lable)
-        result_dict["Number of division"].append(num_division)
+        result_dict["NumberOfDivision"].append(num_division)
         # Division-centred average
 
     results = pd.DataFrame.from_dict(result_dict, orient="index").transpose()

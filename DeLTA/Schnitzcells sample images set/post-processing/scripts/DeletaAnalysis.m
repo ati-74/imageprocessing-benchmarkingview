@@ -56,11 +56,11 @@ end
 T = table(transpose(1:length(growth_rate)),transpose(growth_rate),transpose(birthLength),transpose(lifeHistory),transpose(Average_Velocity),transpose(Average_length));
 T2=table(transpose(1:length(number_of_cells_in_each_timesteps)),transpose(number_of_cells_in_each_timesteps));
 %add column name
-T.Properties.VariableNames={'CellNumber','GrowthRate','BirthLength','LifeHistory','AverageVelocity','AverageLength'};
+T.Properties.VariableNames={'CellNumber','GrowthRate','birthLength','LifeHistory','AverageVelocity','AverageLength'};
 T2.Properties.VariableNames={'StepNumber','NumberOfCells'};
 
 % write to csv
-writetable(T,'../results/DeLTA_life_history_based_features.csv','Delimiter',',','QuoteStrings',true)
+writetable(T,'../results/DeLTA_LifeHistory_based_Analysis.csv','Delimiter',',','QuoteStrings',true)
 writetable(T2,'../results/DeLTA_Num_cells_in_each_timeStep.csv','Delimiter',',','QuoteStrings',true)
 
 

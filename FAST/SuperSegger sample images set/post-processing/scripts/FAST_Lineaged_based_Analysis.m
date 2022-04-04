@@ -35,5 +35,5 @@ T = table(transpose(dict1.keys),transpose(dict1.values));
 T.Properties.VariableNames={'Cell_lable','NumberOfDivision'};
 
 % write to csv
-writetable(T,'../results/FAST_Lineaged_based_Analysis.csv','Delimiter',',','QuoteStrings',true)
+writetable(T,'../results/FAST_Lineage_based_Analysis.csv','Delimiter',',','QuoteStrings',true)
 

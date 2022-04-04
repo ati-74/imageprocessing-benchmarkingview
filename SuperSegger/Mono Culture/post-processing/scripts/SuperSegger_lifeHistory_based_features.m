@@ -17,9 +17,9 @@ end
 %add to table
 T = table(transpose(1:length(growth_rate)),growth_rate,birthLength,lifeHistory,transpose(AverageVelocity),transpose(AverageLength));
 %add column name
-T.Properties.VariableNames={'CellNumber','GrowthRate','BirthLength','LifeHistory','AverageVelocity','AverageLength'};
+T.Properties.VariableNames={'CellNumber','GrowthRate','birthLength','LifeHistory','AverageVelocity','AverageLength'};
 
 % write to csv
 %life history based features
-writetable(T,'../results/SuperSegger_life_history_based_features.csv','Delimiter',',','QuoteStrings',true)
+writetable(T,'../results/SuperSegger_LifeHistory_based_Analysis.csv','Delimiter',',','QuoteStrings',true)
 

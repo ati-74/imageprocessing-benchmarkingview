@@ -147,11 +147,11 @@ def BacteriaAnalysis(dataFrame, interval_time, growth_rate_method):
     result_dict = {
         "CellId": [],
         "lable": [],
-        "birth Length": [],
+        "birthLength": [],
         "AverageLength": [],
         "AverageVelocity": [],
         "LifeHistory": [],
-        "growth rate": [],
+        "GrowthRate": [],
     }
 
     dataFrame["id"] = ""
@@ -213,11 +213,11 @@ def BacteriaAnalysis(dataFrame, interval_time, growth_rate_method):
                 result_dict["lable"].append(
                     dfLifehistory.iloc[[0]]["TrackObjects_Label_50"].values[0]
                 )
-                result_dict["birth Length"].append(birthLength)
+                result_dict["birthLength"].append(birthLength)
                 result_dict["AverageLength"].append(meanLength)
                 result_dict["AverageVelocity"].append(average_velocity)
                 result_dict["LifeHistory"].append(LifeHistoryLength)
-                result_dict["growth rate"].append(elongation_rate)
+                result_dict["GrowthRate"].append(elongation_rate)
                 for idx in LifehistoryIndex:
                     dataFrame.at[idx, "id"] = id_of_bacteria
                     dataFrame.at[idx, "growthRate"] = elongation_rate
@@ -244,8 +244,8 @@ def BacteriaAnalysis(dataFrame, interval_time, growth_rate_method):
     # remove incoorect bacteria
     dataFrame=dropIndex(dataFrame)
     #rename
-    FinaldataFrame = dataFrame.rename(columns={'AreaShape_Orientation':'orientation','TrackObjects_Label_50':'lable'})
-    FinaldataFrame = FinaldataFrame[['ImageNumber','ObjectNumber','orientation','lable','divideFlag']]
+    FinaldataFrame = dataFrame.rename(columns={'AreaShape_Orientation':'Orientation','TrackObjects_Label_50':'lable'})
+    FinaldataFrame = FinaldataFrame[['ImageNumber','ObjectNumber','Orientation','lable','divideFlag']]
     # rename some columns
     results = pd.DataFrame.from_dict(result_dict, orient="index").transpose()
     return FinaldataFrame , results

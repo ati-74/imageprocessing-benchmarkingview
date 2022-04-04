@@ -29,11 +29,11 @@ def life_history_based_features(df, interval_Time):
     unique_id = list(set(df["CellId"].values))
     result_dict = {
         "CellId": [],
-        "birth Length": [],
+        "birthLength": [],
         "AverageLength": [],
         "AverageVelocity": [],
         "LifeHistory": [],
-        "growth rate": [],
+        "GrowthRate": [],
     }
 
     for indx in unique_id:
@@ -60,11 +60,11 @@ def life_history_based_features(df, interval_Time):
 
         # store results
         result_dict["CellId"].append(indx)
-        result_dict["birth Length"].append(birth_length)
+        result_dict["birthLength"].append(birth_length)
         result_dict["AverageLength"].append(meanLength)
         result_dict["AverageVelocity"].append(average_velocity)
         result_dict["LifeHistory"].append(LifeHistoryLength)
-        result_dict["growth rate"].append(growth_rate)
+        result_dict["GrowthRate"].append(growth_rate)
 
     results = pd.DataFrame.from_dict(result_dict, orient="index").transpose()
     return results
