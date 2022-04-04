@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-
 def plot(df1 , df2,df3 , df4 , df5, dataset , plot_title, min_val , max_val ,num_bins,Tools_name,feature):
 
     fig, ax = plt.subplots()
@@ -36,7 +35,7 @@ def plot(df1 , df2,df3 , df4 , df5, dataset , plot_title, min_val , max_val ,num
     #plt.show()
     fig.savefig(
         "../plots/" + plot_title+"_"+dataset+".png", dpi=300
-    )
+    )   
     # close fig
     fig.clf()
     plt.close()
@@ -139,14 +138,14 @@ def timestep_based_distribution(features ,end_of_file_name,Tools_name,datasets,m
             plt.xticks(rotation = 90 , fontsize=6 )
             plt.suptitle(plot_titles[feature]+"\n("+dataset+")", fontsize=14 , fontweight = "bold")
             plt.legend(loc='upper right')
-            plt.show()
-            #fig = plot.get_figure()
-            #fig.savefig(
-            #    "../plots/" + plot_titles[feature]+"_"+dataset+".png", dpi=300
-            #)
+            #plt.show()
+            fig = plot.get_figure()
+            fig.savefig(
+                "../plots/" + plot_titles[feature]+"_"+dataset+".png", dpi=1200
+            )
             # close fig
-            #fig.clf()
-            #plt.close()            
+            fig.clf()
+            plt.close()            
 
 
 
