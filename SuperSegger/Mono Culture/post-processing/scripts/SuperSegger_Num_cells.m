@@ -19,4 +19,4 @@ T2=table(transpose(1:length(number_of_cells_in_each_timesteps)),transpose(number
 T2.Properties.VariableNames={'StepNumber','NumberOfCells'};
 
 % write to csv
-writetable(T2,'../results/SuperSegger_TimeSteps_Analysis.csv','Delimiter',',','QuoteStrings',true)
+writetable(T2,'../results/SuperSegger_Num_cells_in_each_timeStep.csv','Delimiter',',','QuoteStrings',true)
