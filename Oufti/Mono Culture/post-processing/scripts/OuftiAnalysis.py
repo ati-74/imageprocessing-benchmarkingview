@@ -18,9 +18,9 @@ if __name__ == "__main__":
     lineage_based_results = lineage_based_features(df)
 
     # write to csv
-    #life history based features
+    # life history based features
     path_lifehistory = "../results/Oufti_LifeHistory_based_Analysis"
     life_history_based_results.to_csv(path_lifehistory + ".csv", index=False)
-    #lineage based features
+    # lineage based features
     path_lineage = "../results/Oufti_lineage_based_analysis"
     lineage_based_results.to_csv(path_lineage + ".csv", index=False)

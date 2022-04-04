@@ -6,9 +6,7 @@ def AverageGrowthRate(divisionLength, birthLength, LifeHistoryLength, interval_T
 
     if LifeHistoryLength >= 2:
         t = LifeHistoryLength * interval_Time
-        elongation_rate = round(
-            (np.log(divisionLength) - np.log(birthLength)) / t, 3
-        )
+        elongation_rate = round((np.log(divisionLength) - np.log(birthLength)) / t, 3)
     else:
         elongation_rate = 0
 

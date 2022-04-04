@@ -138,9 +138,11 @@ def Average_Velocity(pos1, pos2, LifeHistoryLength, interval_Time):
 
     return average_velocity
 
+
 def dropIndex(dataFrame):
-    dataFrame = dataFrame.loc[dataFrame["drop"]==False].reset_index(drop=True)
+    dataFrame = dataFrame.loc[dataFrame["drop"] == False].reset_index(drop=True)
     return dataFrame
+
 
 def BacteriaAnalysis(dataFrame, interval_time, growth_rate_method):
     # same Bacteria features
@@ -242,10 +244,17 @@ def BacteriaAnalysis(dataFrame, interval_time, growth_rate_method):
                         dataFrame.at[daughetridx, "drop"] = True
 
     # remove incoorect bacteria
-    dataFrame=dropIndex(dataFrame)
-    #rename
-    FinaldataFrame = dataFrame.rename(columns={'AreaShape_Orientation':'Orientation','TrackObjects_Label_50':'lable'})
-    FinaldataFrame = FinaldataFrame[['ImageNumber','ObjectNumber','Orientation','lable','divideFlag']]
+    dataFrame = dropIndex(dataFrame)
+    # rename
+    FinaldataFrame = dataFrame.rename(
+        columns={
+            "AreaShape_Orientation": "Orientation",
+            "TrackObjects_Label_50": "lable",
+        }
+    )
+    FinaldataFrame = FinaldataFrame[
+        ["ImageNumber", "ObjectNumber", "Orientation", "lable", "divideFlag"]
+    ]
     # rename some columns
     results = pd.DataFrame.from_dict(result_dict, orient="index").transpose()
-    return FinaldataFrame , results
+    return FinaldataFrame, results
