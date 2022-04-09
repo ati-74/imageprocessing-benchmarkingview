@@ -6,9 +6,9 @@ from sklearn.metrics.pairwise import euclidean_distances
 from statistics import stdev
 
 
-def single_plot(t, trackability_score, name, plot_title, dataset):
+def single_plot(t, trackability_score, name, plot_title, dataset,color):
     fig, ax = plt.subplots()
-    plt.plot(t, trackability_score, "-", c="red", label=name)
+    plt.plot(t, trackability_score, "-", c=color, label=name)
     plt.xticks(rotation=90, fontsize=6)
     fig.subplots_adjust(bottom=0.2)
     plt.suptitle(
@@ -143,13 +143,13 @@ def bac_feature(
         t_SuperSegger, trackability_SuperSegger = trackability_calc(df_supersegger)
         # plot
         # single plot
-        single_plot(t_CP, trackability_CP, Tools_name[0], plot_title, dataset)
+        single_plot(t_CP, trackability_CP, Tools_name[0], plot_title, dataset,'red')
         if dataset != "Mono Culture":
-            single_plot(t_DeLTA, trackability_DeLTA, Tools_name[1], plot_title, dataset)
-        single_plot(t_FAST, trackability_FAST, Tools_name[2], plot_title, dataset)
-        single_plot(t_Oufti, trackability_Oufti, Tools_name[3], plot_title, dataset)
+            single_plot(t_DeLTA, trackability_DeLTA, Tools_name[1], plot_title, dataset,'black')
+        single_plot(t_FAST, trackability_FAST, Tools_name[2], plot_title, dataset,'green')
+        single_plot(t_Oufti, trackability_Oufti, Tools_name[3], plot_title, dataset,'yellow')
         single_plot(
-            t_SuperSegger, trackability_SuperSegger, Tools_name[4], plot_title, dataset
+            t_SuperSegger, trackability_SuperSegger, Tools_name[4], plot_title, dataset,'blue'
         )
         # all in one
         fig, ax = plt.subplots()
