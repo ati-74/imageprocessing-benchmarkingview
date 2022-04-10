@@ -201,11 +201,11 @@ if __name__ == "__main__":
 
     # main directory of each image processing tools
     main_directories = {
-        "CP_directory": "../../CellProfiler/",
-        "DeLTA_directory": "../../DeLTA/",
-        "FAST_directory": "../../FAST/",
-        "Oufti_directory": "../../Oufti/",
-        "SuperSegger_directory": "../../SuperSegger/",
+        "CP_directory": "../../../CellProfiler/",
+        "DeLTA_directory": "../../../DeLTA/",
+        "FAST_directory": "../../../FAST/",
+        "Oufti_directory": "../../../Oufti/",
+        "SuperSegger_directory": "../../../SuperSegger/",
     }
 
     # datasets
