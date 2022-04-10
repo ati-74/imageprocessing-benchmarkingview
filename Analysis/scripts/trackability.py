@@ -17,6 +17,8 @@ def single_plot(t, trackability_score, name, plot_title, dataset,color):
         fontweight="bold",
     )
     plt.legend(loc="upper right")
+    ax.set_xlabel('Time Step')
+    ax.set_ylabel('Trackability score')
     # plt.show()
     fig.savefig(
         "../trackability plots/" + plot_title + "_" + dataset + "_" + name + ".png",
@@ -26,13 +28,23 @@ def single_plot(t, trackability_score, name, plot_title, dataset,color):
     fig.clf()
     plt.close()
 
+def sort_lists_by_min(*lists):
+    return sorted(lists, key=lambda x: sorted(x))
 
 def topN_index_columns_from_symmmdist(dist_df):
-    a = dist_df.to_numpy(copy=True)
-    # a[np.tri(len(a), dtype=bool)] = np.inf
-    idx = np.argpartition(a.ravel(), range(1))[:1]
-    r, c = np.unravel_index(idx, a.shape)
-    return list(zip(dist_df.index[r], dist_df.columns[c]))
+    rows_to_list = dist_df.values.tolist()
+    num_rows = dist_df.shape[0]
+    min_row =rows_to_list[0]
+    min_row_indx = 0
+    for i in range(1,num_rows):
+        min_row = sort_lists_by_min(rows_to_list[i],min_row)[0]
+        if min_row == rows_to_list[i]:
+            min_row_indx = i
+    min_val = min(min_row)
+    col_index = min_row.index(min_val)
+    min_row_indx = list(dist_df.index)[min_row_indx]
+    col_index = list(dist_df.columns.values)[col_index]
+    return [min_row_indx,min_val,col_index]
 
 
 def trackability_calc(df):
@@ -40,6 +52,7 @@ def trackability_calc(df):
     trackability_values = []
     timeStep_val = []
     for timestep in range(len(uniq_timeSteps) - 1):
+        print(timestep)
         df_current_timeStep = df.loc[df["TimeStep"] == uniq_timeSteps[timestep]]
         df_next_timeStep = df.loc[df["TimeStep"] == uniq_timeSteps[timestep + 1]]
         # distance matrix
@@ -53,13 +66,16 @@ def trackability_calc(df):
         num_bac = df_current_timeStep.shape[0]
         distance = []
         rows = []
+        #normalized distance dataframe
         for i in range(num_bac):
             if distance_df.shape[1]:
-                indx = topN_index_columns_from_symmmdist(distance_df)
-                distance.append(distance_df.loc[indx[0][0], indx[0][1]])
-                rows.append(indx[0][0])
-                distance_df.drop(indx[0][0], axis=0, inplace=True)
-                distance_df.drop(indx[0][1], axis=1, inplace=True)
+                min_info = topN_index_columns_from_symmmdist(distance_df)
+                distance.append(min_info[1])
+                rows.append(min_info[0])
+                # row
+                distance_df.drop(min_info[0], axis=0, inplace=True)
+                # column
+                distance_df.drop(min_info[2], axis=1, inplace=True)
         if len(distance) > 1:
             delta_x_stdev = stdev(distance)
             x = np.sqrt(
@@ -84,7 +100,7 @@ def bac_feature(
         CP_csv_file = (
             main_directories["CP_directory"]
             + dataset
-            + "/post-processing/results/"
+            + "/2. Ilastik Output/post-processing/results/"
             + Tools_name[0]
             + "_"
             + end_of_file_name
@@ -93,7 +109,7 @@ def bac_feature(
         DeLTA_csv_file = (
             main_directories["DeLTA_directory"]
             + dataset
-            + "/post-processing/results/"
+            + "/1. Raw Images/post-processing/results/"
             + Tools_name[1]
             + "_"
             + end_of_file_name
@@ -102,7 +118,7 @@ def bac_feature(
         FAST_csv_file = (
             main_directories["FAST_directory"]
             + dataset
-            + "/post-processing/results/"
+            + "/2. Ilastik Output/post-processing/results/"
             + Tools_name[2]
             + "_"
             + end_of_file_name
@@ -111,7 +127,7 @@ def bac_feature(
         Oufti_csv_file = (
             main_directories["Oufti_directory"]
             + dataset
-            + "/post-processing/results/"
+            + "/1. Raw Images/post-processing/results/"
             + Tools_name[3]
             + "_"
             + end_of_file_name
@@ -120,7 +136,7 @@ def bac_feature(
         SuperSegger_csv_file = (
             main_directories["SuperSegger_directory"]
             + dataset
-            + "/post-processing/results/"
+            + "/1. Raw Images/post-processing/results/"
             + Tools_name[4]
             + "_"
             + end_of_file_name
@@ -170,6 +186,8 @@ def bac_feature(
             fontweight="bold",
         )
         plt.legend(loc="upper right")
+        ax.set_xlabel('Time Step')
+        ax.set_ylabel('Trackability score')
         # plt.show()
         fig.savefig(
             "../trackability plots/" + plot_title + "_" + dataset + ".png", dpi=600
