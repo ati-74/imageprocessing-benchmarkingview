@@ -8,6 +8,8 @@ cell_lable=[];
 Orientation=[];
 Center_X=[];
 Center_Y=[];
+major_axis = [];
+minor_axis = [];
 
 
 for i=1:cellNumber
@@ -18,13 +20,15 @@ for i=1:cellNumber
         Orientation(end+1)=res{1}.lineage{i}.orientation(j);
         Center_X(end+1)=res{1}.lineage{i}.x_center(j);
         Center_Y(end+1)=res{1}.lineage{i}.y_center(j);
+        major_axis(end+1)=res{1}.lineage{i}.length(j);
+        minor_axis(end+1)=res{1}.lineage{i}.width(j);
     end   
 end
 
 %add to table
-T = sortrows(table(transpose(TimeStep),transpose(cell_lable),transpose(Orientation),transpose(Center_X),transpose(Center_Y)));
+T = sortrows(table(transpose(TimeStep),transpose(cell_lable),transpose(Orientation),transpose(Center_X),transpose(Center_Y),transpose(major_axis),transpose(minor_axis)));
 %add column name
-T.Properties.VariableNames={'TimeStep','Cell_lable','Orientation','Center_X','Center_Y'};
+T.Properties.VariableNames={'TimeStep','Cell_lable','Orientation','Center_X','Center_Y','Major_axis','Minor_axis'};
 
 % write to csv
 writetable(T,'../results/DeLTA_bacteria_feature_analysis.csv','Delimiter',',','QuoteStrings',true)
