@@ -252,11 +252,13 @@ def BacteriaAnalysis(dataFrame, interval_time, growth_rate_method):
             "AreaShape_Orientation": "Orientation",
             "TrackObjects_Label_50": "lable",
             "AreaShape_Center_X": "Center_X",
-            "AreaShape_Center_Y": "Center_Y"
+            "AreaShape_Center_Y": "Center_Y",
+            "AreaShape_MajorAxisLength" : "Major_axis",
+            "AreaShape_MinorAxisLength" : "Minor_axis"
         }
     )
     FinaldataFrame = FinaldataFrame[
-        ["TimeStep", "ObjectNumber", "Orientation", "lable", "Center_X", "Center_Y", "divideFlag"]
+        ["TimeStep", "ObjectNumber", "Orientation", "lable", "Center_X", "Center_Y", "divideFlag", "Major_axis", "Minor_axis"]
     ]
     # rename some columns
     results = pd.DataFrame.from_dict(result_dict, orient="index").transpose()
