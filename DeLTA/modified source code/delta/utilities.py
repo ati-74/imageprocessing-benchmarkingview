@@ -2276,7 +2276,7 @@ def vidwrite(
 
 def roi_features(
     labels_frame: npt.NDArray[np.uint16],
-    features: Tuple[str, ...] = ("length", "width", "area", "perimeter", "edges" , "x_center" , "y_center" , "orientation"),
+    features: Tuple[str, ...] = ("length", "width", "area", "perimeter", "edges" , "x_center" , "y_center" , "orientation","absolute_width","absolute_height"),
     fluo_frames: np.ndarray = None,
     roi_box: CroppingBox = None,
 ) -> Tuple[List[int], List[Dict[str, Any]]]:
@@ -2381,8 +2381,8 @@ def singlecell_features(
     if "edges" in features:
         features_dict["edges"] = image_edges(contour, mask)
 
-    if "length" in features or "width" in features or "x_center" in features or "y_center" in features or "orientation" in features:
-        width, length , x_center , y_center , orientation = cell_width_length_center_orientation(contour)
+    if "length" in features or "width" in features or "x_center" in features or "y_center" in features or "orientation" in features or "absolute_width" in features or "absolute_height" in features:
+        width, length , x_center , y_center , orientation , absolute_width , absolute_height = cell_width_length_center_orientation(contour)
         if "length" in features:
             features_dict["length"] = length
         if "width" in features:
@@ -2393,6 +2393,11 @@ def singlecell_features(
             features_dict["y_center"] = y_center
         if "orientation" in features:
             features_dict["orientation"] = orientation
+        if "absolute_width" in features:
+            features_dict["absolute_width"] = absolute_width
+        if "absolute_height" in features:
+            features_dict["absolute_height"] = absolute_height
+          
 
     if "area" in features:
         features_dict["area"] = cell_area(contour)
@@ -2482,11 +2487,13 @@ def cell_width_length_center_orientation(contour: Contour) -> Tuple[float, float
 
     width = min(rotrect[1])
     length = max(rotrect[1])
+    absolute_width = rotrect[1][0]
+    absolute_height = rotrect[1][1]
     x_center = rotrect[0][0]
     y_center = rotrect[0][1]
     orientation = rotrect[2]
 
-    return width, length , x_center , y_center , orientation
+    return width, length , x_center , y_center , orientation , absolute_width , absolute_height
 
 
 def cell_area(contour: Contour) -> float:
