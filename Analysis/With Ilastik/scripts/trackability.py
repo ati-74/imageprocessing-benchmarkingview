@@ -21,7 +21,7 @@ def single_plot(t, trackability_score, name, plot_title, dataset,color):
     ax.set_ylabel('Trackability score')
     # plt.show()
     fig.savefig(
-        "../trackability plots/" + plot_title + "_" + dataset + "_" + name + ".png",
+        "../trackability plots/"+dataset + "/" + plot_title + "_" + dataset + "_" + name + ".png",
         dpi=600,
     )
     # close fig
@@ -125,8 +125,7 @@ def bac_feature(
             + end_of_file_name
             + ".csv"
         )
-        if dataset != "Schnitzcells sample images set":
-            Oufti_csv_file = (
+        Oufti_csv_file = (
                 main_directories["Oufti_directory"]
                 + dataset
                 + "/2. Ilastik Output/post-processing/results/"
@@ -134,7 +133,7 @@ def bac_feature(
                 + "_"
                 + end_of_file_name
                 + ".csv"
-            )
+        )
         SuperSegger_csv_file = (
             main_directories["SuperSegger_directory"]
             + dataset
@@ -148,24 +147,21 @@ def bac_feature(
         df_cp = pd.read_csv(CP_csv_file, usecols=features)
         df_delta = pd.read_csv(DeLTA_csv_file, usecols=features)
         df_fast = pd.read_csv(FAST_csv_file, usecols=features)
-        if dataset != "Schnitzcells sample images set":
-            df_oufti = pd.read_csv(Oufti_csv_file, usecols=features)
+        df_oufti = pd.read_csv(Oufti_csv_file, usecols=features)
         df_supersegger = pd.read_csv(SuperSegger_csv_file, usecols=features)
 
         # calculation of trackability
         t_CP, trackability_CP = trackability_calc(df_cp)
         t_DeLTA, trackability_DeLTA = trackability_calc(df_delta)
         t_FAST, trackability_FAST = trackability_calc(df_fast)
-        if dataset != "Schnitzcells sample images set":
-            t_Oufti, trackability_Oufti = trackability_calc(df_oufti)
+        t_Oufti, trackability_Oufti = trackability_calc(df_oufti)
         t_SuperSegger, trackability_SuperSegger = trackability_calc(df_supersegger)
         # plot
         # single plot
         single_plot(t_CP, trackability_CP, Tools_name[0], plot_title, dataset,'red')
         single_plot(t_DeLTA, trackability_DeLTA, Tools_name[1], plot_title, dataset,'black')
         single_plot(t_FAST, trackability_FAST, Tools_name[2], plot_title, dataset,'green')
-        if dataset != "Schnitzcells sample images set":
-            single_plot(t_Oufti, trackability_Oufti, Tools_name[3], plot_title, dataset,'yellow')
+        single_plot(t_Oufti, trackability_Oufti, Tools_name[3], plot_title, dataset,'yellow')
         single_plot(
             t_SuperSegger, trackability_SuperSegger, Tools_name[4], plot_title, dataset,'blue'
         )
@@ -174,8 +170,7 @@ def bac_feature(
         plt.plot(t_CP, trackability_CP, "-", c="red", label=Tools_name[0])
         plt.plot(t_DeLTA, trackability_DeLTA, "-", c="black", label=Tools_name[1])
         plt.plot(t_FAST, trackability_FAST, "-", c="green", label=Tools_name[2])
-        if dataset != "Schnitzcells sample images set":
-            plt.plot(t_Oufti, trackability_Oufti, "-", c="yellow", label=Tools_name[3])
+        plt.plot(t_Oufti, trackability_Oufti, "-", c="yellow", label=Tools_name[3])
         plt.plot(
             t_SuperSegger, trackability_SuperSegger, "-", c="blue", label=Tools_name[4]
         )
@@ -212,6 +207,7 @@ if __name__ == "__main__":
 
     # datasets
     datasets = [
+        "Mono Culture",
         "Schnitzcells sample images set",
         "SuperSegger sample images set",
     ]
