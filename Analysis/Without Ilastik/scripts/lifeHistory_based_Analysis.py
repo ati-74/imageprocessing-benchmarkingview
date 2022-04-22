@@ -29,8 +29,7 @@ def plot(
     a_heights, a_bins = np.histogram(df1, bins=num_bins, range=(min_val, max_val))
     b_heights, b_bins = np.histogram(df2, bins=num_bins, range=(min_val, max_val))
     c_heights, c_bins = np.histogram(df3, bins=num_bins, range=(min_val, max_val))
-    if dataset !='Schnitzcells sample images set':
-        d_heights, d_bins = np.histogram(df4, bins=num_bins, range=(min_val, max_val))
+    d_heights, d_bins = np.histogram(df4, bins=num_bins, range=(min_val, max_val))
     e_heights, e_bins = np.histogram(df5, bins=num_bins, range=(min_val, max_val))
     width = (a_bins[1] - a_bins[0]) / 5
 
@@ -50,14 +49,13 @@ def plot(
         facecolor="green",
         label=Tools_name[2],
     )
-    if dataset !='Schnitzcells sample images set':
-        ax.bar(
+    ax.bar(
             d_bins[:-1] + 3 * width,
             d_heights,
             width=width,
             facecolor="yellow",
             label=Tools_name[3],
-        )
+    )
     ax.bar(
         e_bins[:-1] + 4 * width,
         e_heights,
@@ -109,10 +107,7 @@ def life_history_based_distribution(
                 + end_of_file_name
                 + ".csv"
             )
-            if dataset != "Mono Culture" or (
-                feature not in ["AverageVelocity", "AverageLength"]
-            ):
-                DeLTA_csv_file = (
+            DeLTA_csv_file = (
                     main_directories["DeLTA_directory"]
                     + dataset
                     + "/1. Raw Images/post-processing/results/"
@@ -120,7 +115,7 @@ def life_history_based_distribution(
                     + "_"
                     + end_of_file_name
                     + ".csv"
-                )
+            )
             FAST_csv_file = (
                 main_directories["FAST_directory"]
                 + dataset
@@ -131,13 +126,13 @@ def life_history_based_distribution(
                 + ".csv"
             )
             Oufti_csv_file = (
-                main_directories["Oufti_directory"]
-                + dataset
-                + "/1. Raw Images/post-processing/results/"
-                + Tools_name[3]
-                + "_"
-                + end_of_file_name
-                + ".csv"
+                    main_directories["Oufti_directory"]
+                    + dataset
+                    + "/1. Raw Images/post-processing/results/"
+                    + Tools_name[3]
+                    + "_"
+                    + end_of_file_name
+                    + ".csv"
             )
             SuperSegger_csv_file = (
                 main_directories["SuperSegger_directory"]
@@ -152,12 +147,9 @@ def life_history_based_distribution(
             df_cp = pd.read_csv(CP_csv_file, usecols=[str(feature)])
             # remove nan values
             df_cp = df_cp.loc[df_cp[str(feature)].notnull()]
-            if dataset != "Mono Culture" or (
-                feature not in ["AverageVelocity", "AverageLength"]
-            ):
-                df_delta = pd.read_csv(DeLTA_csv_file, usecols=[str(feature)])
-                # remove nan values
-                df_delta = df_delta.loc[df_delta[str(feature)].notnull()]
+            df_delta = pd.read_csv(DeLTA_csv_file, usecols=[str(feature)])
+            # remove nan values
+            df_delta = df_delta.loc[df_delta[str(feature)].notnull()]
             df_fast = pd.read_csv(FAST_csv_file, usecols=[str(feature)])
             # remove nan values
             df_fast = df_fast.loc[df_fast[str(feature)].notnull()]
@@ -167,54 +159,23 @@ def life_history_based_distribution(
             df_supersegger = pd.read_csv(SuperSegger_csv_file, usecols=[str(feature)])
             # remove nan values
             df_supersegger = df_supersegger.loc[df_supersegger[str(feature)].notnull()]
-            if dataset == "Mono Culture" and (
-                feature in ["AverageVelocity", "AverageLength"]
-            ):
-                # draw plot
-                max_val = max(
-                    df_cp.values.max(),
-                    df_fast.values.max(),
-                    df_oufti.values.max(),
-                    df_supersegger.values.max(),
-                )
-                min_val = min(
-                    df_cp.values.min(),
-                    df_fast.values.min(),
-                    df_oufti.values.min(),
-                    df_supersegger.values.min(),
-                )
-                plot(
-                    df_cp,
-                    '',
-                    df_fast,
-                    df_oufti,
-                    df_supersegger,
-                    dataset,
-                    plot_titles[feature],
-                    min_val,
-                    max_val,
-                    num_bins,
-                    Tools_name,
-                    feature,
-                )
-
-            else:
-                # draw plot
-                max_val = max(
+            
+            # draw plot
+            max_val = max(
                     df_cp.values.max(),
                     df_delta.values.max(),
                     df_fast.values.max(),
                     df_oufti.values.max(),
                     df_supersegger.values.max(),
-                )
-                min_val = min(
+            )
+            min_val = min(
                     df_cp.values.min(),
                     df_delta.values.min(),
                     df_fast.values.min(),
                     df_oufti.values.min(),
                     df_supersegger.values.min(),
-                )
-                plot(
+            )
+            plot(
                     df_cp,
                     df_delta,
                     df_fast,
@@ -227,7 +188,7 @@ def life_history_based_distribution(
                     num_bins,
                     Tools_name,
                     feature,
-                )
+            )
 
 
 def lineage_based_distribution(
@@ -264,13 +225,13 @@ def lineage_based_distribution(
                 + ".csv"
             )
             Oufti_csv_file = (
-                main_directories["Oufti_directory"]
-                + dataset
-                + "/1. Raw Images/post-processing/results/"
-                + Tools_name[3]
-                + "_"
-                + end_of_file_name
-                + ".csv"
+                    main_directories["Oufti_directory"]
+                    + dataset
+                    + "/1. Raw Images/post-processing/results/"
+                    + Tools_name[3]
+                    + "_"
+                    + end_of_file_name
+                    + ".csv"
             )
             SuperSegger_csv_file = (
                 main_directories["SuperSegger_directory"]
@@ -299,35 +260,34 @@ def lineage_based_distribution(
             df_supersegger = df_supersegger.loc[df_supersegger[str(feature)].notnull()]
             # draw plot
             max_val = max(
-                df_cp.values.max(),
-                df_delta.values.max(),
-                df_fast.values.max(),
-                df_oufti.values.max(),
-                df_supersegger.values.max(),
+                    df_cp.values.max(),
+                    df_delta.values.max(),
+                    df_fast.values.max(),
+                    df_oufti.values.max(),
+                    df_supersegger.values.max(),
             )
             min_val = min(
-                df_cp.values.min(),
-                df_delta.values.min(),
-                df_fast.values.min(),
-                df_oufti.values.min(),
-                df_supersegger.values.min(),
-            )
+                    df_cp.values.min(),
+                    df_delta.values.min(),
+                    df_fast.values.min(),
+                    df_oufti.values.min(),
+                    df_supersegger.values.min(),
+                )
             plot(
-                df_cp,
-                df_delta,
-                df_fast,
-                df_oufti,
-                df_supersegger,
-                dataset,
-                plot_titles[feature],
-                min_val,
-                max_val,
-                num_bins,
-                Tools_name,
-                feature,
+                    df_cp,
+                    df_delta,
+                    df_fast,
+                    df_oufti,
+                    df_supersegger,
+                    dataset,
+                    plot_titles[feature],
+                    min_val,
+                    max_val,
+                    num_bins,
+                    Tools_name,
+                    feature,
             )
-
-
+                
 def timestep_based_distribution(
     features, end_of_file_name, Tools_name, datasets, main_directories, plot_titles
 ):
@@ -361,13 +321,13 @@ def timestep_based_distribution(
                 + ".csv"
             )
             Oufti_csv_file = (
-                main_directories["Oufti_directory"]
-                + dataset
-                + "/1. Raw Images/post-processing/results/"
-                + Tools_name[3]
-                + "_"
-                + end_of_file_name
-                + ".csv"
+                    main_directories["Oufti_directory"]
+                    + dataset
+                    + "/1. Raw Images/post-processing/results/"
+                    + Tools_name[3]
+                    + "_"
+                    + end_of_file_name
+                    + ".csv"
             )
             SuperSegger_csv_file = (
                 main_directories["SuperSegger_directory"]
@@ -395,23 +355,23 @@ def timestep_based_distribution(
             df = pd.concat([df_cp, df_delta, df_fast, df_oufti, df_supersegger], axis=1)
             df.index = np.arange(1, len(df) + 1)
             plot = df.plot(
-                kind="bar", color=["red", "black", "green", "yellow", "blue"]
+                    kind="bar", color=["red", "black", "green", "yellow", "blue"]
             )
             plt.xticks(rotation=90, fontsize=6)
             plt.suptitle(
-                plot_titles[feature] + "\n(" + dataset + " (Without Ilastik))",
-                fontsize=14,
-                fontweight="bold",
+                    plot_titles[feature] + "\n(" + dataset + ")",
+                    fontsize=14,
+                    fontweight="bold",
             )
             plt.legend(loc="upper right")
             # plt.show()
             fig = plot.get_figure()
             fig.savefig(
-                "../plots/" + plot_titles[feature] + "_" + dataset + ".png", dpi=1200
+                    "../plots/" + plot_titles[feature] + "_" + dataset + ".png", dpi=1200
             )
             # close fig
             fig.clf()
-            plt.close()
+            plt.close()              
 
 
 def bac_feature_distribution(
@@ -429,8 +389,7 @@ def bac_feature_distribution(
                 + end_of_file_name
                 + ".csv"
             )
-            if dataset != "Mono Culture" or (feature not in ["Orientation"]):
-                DeLTA_csv_file = (
+            DeLTA_csv_file = (
                     main_directories["DeLTA_directory"]
                     + dataset
                     + "/1. Raw Images/post-processing/results/"
@@ -438,7 +397,7 @@ def bac_feature_distribution(
                     + "_"
                     + end_of_file_name
                     + ".csv"
-                )
+            )
             FAST_csv_file = (
                 main_directories["FAST_directory"]
                 + dataset
@@ -449,13 +408,13 @@ def bac_feature_distribution(
                 + ".csv"
             )
             Oufti_csv_file = (
-                main_directories["Oufti_directory"]
-                + dataset
-                + "/1. Raw Images/post-processing/results/"
-                + Tools_name[3]
-                + "_"
-                + end_of_file_name
-                + ".csv"
+                    main_directories["Oufti_directory"]
+                    + dataset
+                    + "/1. Raw Images/post-processing/results/"
+                    + Tools_name[3]
+                    + "_"
+                    + end_of_file_name
+                    + ".csv"
             )
             SuperSegger_csv_file = (
                 main_directories["SuperSegger_directory"]
@@ -470,10 +429,9 @@ def bac_feature_distribution(
             df_cp = pd.read_csv(CP_csv_file, usecols=[str(feature)])
             # remove nan values
             df_cp = df_cp.loc[df_cp[str(feature)].notnull()]
-            if dataset != "Mono Culture" or (feature not in ["Orientation"]):
-                df_delta = pd.read_csv(DeLTA_csv_file, usecols=[str(feature)])
-                # remove nan values
-                df_delta = df_delta.loc[df_delta[str(feature)].notnull()]
+            df_delta = pd.read_csv(DeLTA_csv_file, usecols=[str(feature)])
+            # remove nan values
+            df_delta = df_delta.loc[df_delta[str(feature)].notnull()]
             df_fast = pd.read_csv(FAST_csv_file, usecols=[str(feature)])
             # remove nan values
             df_fast = df_fast.loc[df_fast[str(feature)].notnull()]
@@ -483,52 +441,22 @@ def bac_feature_distribution(
             df_supersegger = pd.read_csv(SuperSegger_csv_file, usecols=[str(feature)])
             # remove nan values
             df_supersegger = df_supersegger.loc[df_supersegger[str(feature)].notnull()]
-            if dataset == "Mono Culture" and (feature in ["Orientation"]):
-                # draw plot
-                max_val = max(
-                    df_cp.values.max(),
-                    df_fast.values.max(),
-                    df_oufti.values.max(),
-                    df_supersegger.values.max(),
-                )
-                min_val = min(
-                    df_cp.values.min(),
-                    df_fast.values.min(),
-                    df_oufti.values.min(),
-                    df_supersegger.values.min(),
-                )
-                plot(
-                    df_cp,
-                    '',
-                    df_fast,
-                    df_oufti,
-                    df_supersegger,
-                    dataset,
-                    plot_titles[feature],
-                    min_val,
-                    max_val,
-                    num_bins,
-                    Tools_name,
-                    feature,
-                )
-
-            else:
-                # draw plot
-                max_val = max(
+            # draw plot
+            max_val = max(
                     df_cp.values.max(),
                     df_delta.values.max(),
                     df_fast.values.max(),
                     df_oufti.values.max(),
                     df_supersegger.values.max(),
-                )
-                min_val = min(
+            )
+            min_val = min(
                     df_cp.values.min(),
                     df_delta.values.min(),
                     df_fast.values.min(),
                     df_oufti.values.min(),
                     df_supersegger.values.min(),
-                )
-                plot(
+            )
+            plot(
                     df_cp,
                     df_delta,
                     df_fast,
@@ -541,7 +469,7 @@ def bac_feature_distribution(
                     num_bins,
                     Tools_name,
                     feature,
-                )
+            )
 
 
 if __name__ == "__main__":
@@ -557,6 +485,7 @@ if __name__ == "__main__":
 
     # datasets
     datasets = [
+        "Mono Culture",
         "Schnitzcells sample images set",
         "SuperSegger sample images set",
     ]
