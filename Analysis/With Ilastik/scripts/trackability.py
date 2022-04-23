@@ -68,7 +68,6 @@ def trackability_calc(df):
         num_bac = df_current_timeStep.shape[0]
         distance = []
         rows = []
-        #normalized distance dataframe
         for i in range(num_bac):
             if distance_df.shape[1]:
                 min_info = topN_index_columns_from_symmmdist(distance_df)
