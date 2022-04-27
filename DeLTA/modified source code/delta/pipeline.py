@@ -202,7 +202,7 @@ class Pipeline:
             positions = list(range(self.reader.positions))
 
         if features is None:
-            features_list = ["length", "width", "area", "perimeter", "edges" , "x_center" , "y_center" , "orientation"]
+            features_list = ["length", "width", "area", "perimeter", "edges" , "x_center" , "y_center" , "orientation","absolute_width","absolute_height"]
             for c in range(1, self.reader.channels):
                 features_list += ["fluo%d" % (c,)]
             features = tuple(features_list)
@@ -609,7 +609,9 @@ class Position:
             "edges",
             "x_center",
             "y_center",
-            "orientation"
+            "orientation",
+            "absolute_width",
+            "absolute_height"
         ),
     ):
         """
@@ -859,7 +861,12 @@ class Position:
                 if "y_center" in c:
                     lin[-1]["y_center"] = np.array(c["y_center"], dtype=np.float32)
                 if "orientation" in c:
-                    lin[-1]["orientation"] = np.array(c["orientation"], dtype=np.float32)     
+                    lin[-1]["orientation"] = np.array(c["orientation"], dtype=np.float32) 
+                if "absolute_width" in c:
+                    lin[-1]["absolute_width"] = np.array(c["absolute_width"], dtype=np.float32)
+                if "absolute_height" in c:
+                    lin[-1]["absolute_height"] = np.array(c["absolute_height"], dtype=np.float32) 
+                
                 # Loop through potential fluo channels:
                 fluo = 0
                 while True:
@@ -1352,7 +1359,9 @@ class ROI:
             "edges",
             "x_center",
             "y_center",
-            "orientation"
+            "orientation",
+            "absolute_width",
+            "absolute_height"
         ),
     ):
         """
