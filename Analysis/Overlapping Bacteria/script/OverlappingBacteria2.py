@@ -282,10 +282,10 @@ if __name__ == "__main__":
     #        "Xanthomonase_agarose"
     # xanthomonas microfluidic each3 min-01-Image Export-02
     datasets = [
-        "E.coli_mono_agarose_noisy"
+        "Xanthomonase_chamber"
     ]
-    modes = ["1. Raw images", "2. Ilastik Output"]
-    modes_title = { "1. Raw images":"Without Ilastik", "2. Ilastik Output":"With Ilastik"}
+    modes = ["1. Raw images"]
+    modes_title = { "1. Raw images":"Without Ilastik"}
 
     # titles
     plot_titles = ["Objects"]
