@@ -57,10 +57,10 @@ def ProcessData(input_file, interval_time, growth_rate_method="Average"):
     Num_cells_in_each_timeStep_results = Num_cells_in_each_timeStep(df)
 
     # write to csv
-    path_lifehistory = "../results/CP_LifeHistory_based_Analysis"
-    path_lineage = "../results/CP_lineage_based_analysis"
-    path_bacteria_based_features = "../results/CP_bacteria_feature_analysis"
-    path_Num_cells_in_each_timeStep = "../results/CP_Num_cells_in_each_timeStep"
+    path_lifehistory = "../results/CellProfiler_LifeHistory_based_Analysis"
+    path_lineage = "../results/CellProfiler_lineage_based_analysis"
+    path_bacteria_based_features = "../results/CellProfiler_bacteria_feature_analysis"
+    path_Num_cells_in_each_timeStep = "../results/CellProfiler_Num_cells_in_each_timeStep"
 
     life_history_based_analysis.to_csv(path_lifehistory + ".csv", index=False)
     lineage_based_analysis_results.to_csv(path_lineage + ".csv", index=False)
