@@ -1,0 +1,17 @@
+dataset,mode,Number_of_incorrect_tracking
+E.coli_chamber,1. Raw Images,5542
+E.coli_mono_agarose,1. Raw Images,831
+E.coli_mono_agarose,2. Ilastik Output,216
+E.coli_mono_agarose_skipTimeSteps2,2. Ilastik Output,56
+E.coli_mono_agarose_skipTimeSteps,2. Ilastik Output,108
+E.coli_mono_agarose_noisy,1. Raw Images,415
+Pseudomonas_agarose,1. Raw Images,212
+Pseudomonas_agarose,2. Ilastik Output,236
+Pseudomonas_chamber,1. Raw Images,917
+Pseudomonas_chamber,2. Ilastik Output,136
+SuperSegger sample images set,1. Raw Images,10
+SuperSegger sample images set,2. Ilastik Output,1
+Xanthomonase_agarose,1. Raw Images,1852
+Xanthomonase_agarose,2. Ilastik Output,1835
+Xanthomonase_chamber,1. Raw Images,2799
+Xanthomonase_chamber,2. Ilastik Output,522
