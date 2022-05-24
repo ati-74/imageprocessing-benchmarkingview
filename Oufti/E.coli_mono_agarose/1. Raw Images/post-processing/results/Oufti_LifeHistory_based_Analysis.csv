@@ -1,4 +1,4 @@
-CellId,birthLength,AverageLength,AverageVelocity,LifeHistory,GrowthRate
+CellLifeId,birthLength,AverageLength,AverageVelocity,LifeHistory,GrowthRate
 1.0,47.6332092285156,63.63897267094365,-0.062,27.0,0.01
 2.0,26.7620525360107,28.248791728700912,-0.094,56.0,0.007
 3.0,25.8563041687012,36.08291273406057,0.148,33.0,0.014
