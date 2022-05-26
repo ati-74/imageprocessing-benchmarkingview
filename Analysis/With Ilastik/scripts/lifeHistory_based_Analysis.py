@@ -729,10 +729,15 @@ if __name__ == "__main__":
         "SuperSegger_directory": "../../../SuperSegger/",
     }
 
+#        "E.coli_mono_agarose",
+#        "Pseudomonas_agarose",
+#        "SuperSegger sample images set",
+#        "Xanthomonase_agarose",
+#        "Xanthomonase_chamber"   
+
     # datasets
     datasets = [
-        "Xanthomonase_chamber"
-        
+"Pseudomonas_chamber"
     ]
 
     # features

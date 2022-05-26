@@ -731,7 +731,7 @@ if __name__ == "__main__":
 
     # datasets
     datasets = [
-        "Xanthomonase_chamber"
+        "Pseudomonas_chamber"  
     ]
 
     # features
