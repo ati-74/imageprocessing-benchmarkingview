@@ -1,1 +1,0 @@
-Sometimes, we were able to use the alignment module to adjust the dataset images properly. However, when using the alignment module caused errors in detecting and analyzing the data, we didn't use it.
