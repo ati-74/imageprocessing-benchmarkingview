@@ -7,7 +7,7 @@ the resulting tracking plots in the specific folder for each tool under the anal
 bacterium's pixels from the LAbkit output and displays them in black and white. This script is primarily
 used for IOU (Intersection over Union) calculations.</p></br>
 
-<p align="justify"><b><i><a href="Jitter_remover.py" target="_blank">Jitter_remover.py</a>:</b></i> This scripts minimizes stage jitter effects.</p></br>
+<p align="justify"><b><i><a href="jitter_remover.py" target="_blank">Jitter_remover.py</a>:</b></i> This scripts minimizes stage jitter effects.</p></br>
 
 
 <p align="justify"><b><i><a href="DeLTA and SS-O modified code/delta_modified.zip" target="_blank">delta_modified.zip</a>:</b></i> The Delta output includes the minor and major lengths of the rectangle fitting
